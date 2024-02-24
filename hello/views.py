@@ -35,7 +35,7 @@ def menuVet(request):
     return render(request,"menu-bootstrap/a/menuVet.html")
 
 def login(request):
-    return render(request, "hello/login.html")
+    return render(request, "menu-bootstrap/a/login.html")
 
 
 def appointment(request):
