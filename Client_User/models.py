@@ -1,4 +1,7 @@
 from django.db import models
+
+# Create your models here.
+from django.db import models
 # Create your models here.
 class Client(models.Model):
     client_id= models.IntegerField(max_length=None,primary_key=True)
