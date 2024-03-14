@@ -23,6 +23,9 @@ class Pets(models.Model):
 class Medical_history(models.Model):
     Medical_history_id= models.IntegerField(max_length=None,primary_key=True)
     pet_id=models.ForeignKey('Pets',on_delete=models.CASCADE,null=False)
+    hight=models.IntegerField()
+    weight=models.IntegerField()
+    healthyWieght= models.BooleanField(null=True)
     
 class Phone_Owner(models.Model):
     client_id= models.ForeignKey('Client',on_delete=models.CASCADE,null=False)
@@ -38,6 +41,7 @@ class Vaccination(models.Model):
 class Vaccines(models.Model):
     vaccine_id=models.IntegerField(max_length=None,primary_key=True)
     vaccine_name= models.CharField(max_length=100, null=True)
+    score_value= models.IntegerField()
 
 
 #QUICK SEPARATION
@@ -52,6 +56,7 @@ class Vet(models.Model):
     name= models.CharField(max_length=50)
     country_intials=models.CharField(max_length=4)
     phone=models.CharField(max_length=15)
+    image= models.ImageField(upload_to='user/images/')
 #QUICK SEPARATION
     
 
@@ -79,4 +84,10 @@ class Report(models.Model):
 class File(models.Model):    
     report_id=models.ForeignKey('Report',on_delete=models.CASCADE,null=False)
     file= models.FileField(upload_to ='medical/file/')
+class rating(models.Model):
+    rating_id=models.IntegerField(max_length=None,primary_key=True)
+    vet_id= models.ForeignKey('Vet',on_delete=models.CASCADE,null=False)
+    client_id= models.ForeignKey('Client',on_delete=models.CASCADE,null=False)
+    comment= models.CharField(max_length=100,null=True)
+    rating= models.IntegerField(max_length=None, null=True)
 
