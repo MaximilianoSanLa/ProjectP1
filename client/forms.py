@@ -11,6 +11,12 @@ class PetForm(forms.ModelForm):
 class AppointmentForm(forms.ModelForm):
     def __init__(self, client_id, *args, **kwargs):
         super(AppointmentForm, self).__init__(*args, **kwargs)
+        try:
+            client_id = int(client_id)
+        except (TypeError, ValueError):
+            # Manejar el caso en el que client_id no es un entero
+            # Puedes lanzar una excepción, asignar un valor predeterminado o hacer cualquier otra acción necesaria
+            pass
         self.fields['pet_id'].queryset = Pets.objects.filter(client_id=client_id)
         self.fields['vet_id'].queryset = Vet.objects.all()
 
